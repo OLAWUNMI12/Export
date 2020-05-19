@@ -1,0 +1,74 @@
+/***Tables
+  DatabaseMetaData metaData = conn.getMetaData();
+             String[] types = {"TABLE"};
+             //Retrieving the columns in the database
+             ResultSet tables = metaData.getTables(null, null, "%", types);
+             while (tables.next()) {
+                 System.out.println(tables.getString("TABLE_NAME"));
+             }
+****/
+
+
+
+
+
+/***headers
+ stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            int i = 1;
+            while (rs.next()) {
+                ResultSetMetaData rsmd = rs.getMetaData();
+                String name = rsmd.getColumnName(i++);
+                System.out.println(name);
+                }
+****/
+
+
+
+
+import java.sql.*;
+
+public class Export {
+   private static final String url = "jdbc:mysql://server1.sysservesolutions.com/ci_sysdesk";
+   private static final String username = "ci_sysdesk";
+   private static final String password = "4ZVFddHcj";
+public static void main(String[] arg){
+    Connection conn = null;
+
+    try {
+        Class.forName("com.mysql.jdbc.Driver");
+
+        conn = DriverManager.getConnection(url,username,password);
+
+        Statement stmt = null;
+        String query = "select * from Sysdesk_Vehicle";
+        try {
+            DatabaseMetaData metaData = conn.getMetaData();
+            String[] types = {"TABLE"};
+            //Retrieving the columns in the database
+            ResultSet tables = metaData.getTables(null, null, "%", types);
+            while (tables.next()) {
+                System.out.println(tables.getString("TABLE_NAME"));
+            }
+        } catch (SQLException e ) {
+            throw new Error("Problem", e);
+        } finally {
+            if (stmt != null) { stmt.close(); }
+        }
+
+    } catch (SQLException e) {
+        throw new Error("Problem", e);
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+}
+}
+
