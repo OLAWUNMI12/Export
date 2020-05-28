@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class Export {
     private static final String url ="jdbc:mysql://localhost:3306/sysdeskremove" ; //"jdbc:mysql://server1.sysservesolutions.com/ci_sysdesk"
-    private static final String username ="sysdeskremove"; //"ci_sysdesk";
-    private static final String password =   "sysdesk123remove";// "4ZVFddHcj";
+    private static final String username ="sysdeskremove"; 
+    private static final String password =   "sysdesk123remove";
 
     private Connection getConnection() throws ClassNotFoundException, SQLException {
         Connection conn;
