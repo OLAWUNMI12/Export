@@ -11,8 +11,8 @@ import java.util.zip.ZipOutputStream;
 
 public class Export {
     private static final String url ="jdbc:mysql://testserver.sysservesolutions.com/test_fleet" ; //"jdbc:mysql://server1.sysservesolutions.com/ci_sysdesk"
-    private static final String username =;
-    private static final String password =;
+    private static final String username ="user";
+    private static final String password ="pass";
     private Connection getConnection() throws ClassNotFoundException, SQLException {
         Connection connection;
         Class.forName("com.mysql.jdbc.Driver");
